@@ -44,6 +44,7 @@ def find_peaks(path,s) :
         plt.savefig(f'{path_output}\\{s[:-4]}_{count}.png')
         with open(f'{path_output}\\{s[:-4]}_{count}.json', 'w') as fp:
             json.dump(points, fp)
+        plt.clf()
 
 
 for file in os.listdir(path_input) :
