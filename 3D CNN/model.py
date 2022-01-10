@@ -33,10 +33,8 @@ def load_data() :
 (train_videos, train_labels),(test_videos, test_labels) = load_data()
 
 n_classes = 3
-#print("Shape before one-hot encoding: ", train_labels.shape)
 train_labels = np_utils.to_categorical(train_labels, n_classes)
 test_labels = np_utils.to_categorical(test_labels, n_classes)
-#print("Shape after one-hot encoding: ", train_labels.shape)
 
 def make_model() :
 
@@ -55,11 +53,7 @@ model = make_model()
 
 print(model.summary())
 
-#cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=path_model,save_weights_only=True,verbose=1)
-
 model.fit(train_videos, train_labels, batch_size=32, epochs=50, validation_data=(test_videos, test_labels))
-
-#tf.keras.models.save_model(model, path_model, overwrite=True, include_optimizer=True, save_format=None,signatures=None, options=None, save_traces=True)
 
 model.save(f'{path_model}\\model')
 
