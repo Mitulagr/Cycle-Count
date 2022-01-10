@@ -12,7 +12,7 @@ step = 1
 interval = [2,3,4]
 boxes = [(112,259,152,152)]
 
-path_model = "3D CNN\\Checkpoint\\pick.ckpt" 
+path_model = "3D CNN\\Checkpoint" 
 path_input = "RepNet-Pytorch-main\\stitching-videos"
 path_output = "3D CNN\\Stitching Prediction"
 filenames = ["output_1.mp4","output_3.mp4","vlc-record-2021-12-22-18h56m13s-Converting rtsp___admin_Admin@123!@103.210.28.115_1070_live2.sdp-.mp4"]
