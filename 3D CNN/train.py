@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
 path_data = "3D CNN\\Data"
-path_model = "3D CNN\\Checkpoint\\pick.ckpt" 
+path_model = "3D CNN\\Checkpoint" 
 classes = ["Pick","Stitch","Person"]
 positions = ["Left"]
 
