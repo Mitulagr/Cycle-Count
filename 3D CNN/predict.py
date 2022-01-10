@@ -8,12 +8,13 @@ classes = ["Pick","Stitch","Person"]
 positions = ["Left"]
 
 n_frames = 8
-step = 1 # at t = 5.........5-7......5-8.....5-9
+step = 1 
 interval = [2,3,4]
 boxes = [(112,259,152,152)]
 
 path_model = "3D CNN\\Checkpoint\\pick.ckpt" 
 path_input = "RepNet-Pytorch-main\\stitching-videos"
+path_output = "3D CNN\\Stitching Prediction"
 filenames = ["output_1.mp4","output_3.mp4","vlc-record-2021-12-22-18h56m13s-Converting rtsp___admin_Admin@123!@103.210.28.115_1070_live2.sdp-.mp4"]
 
 model = load_model(f'{path_model}\\model', compile = True)
@@ -69,7 +70,7 @@ def run_model(box,path,s) :
     x,y,w,h = box
     ret,src = video.read()
 
-    result = cv2.VideoWriter(f'3D CNN\\Stitching Prediction\\{s[:-4]}.avi',cv2.VideoWriter_fourcc(*'XVID'),fps,(800,600))
+    result = cv2.VideoWriter(f'{path_output}\\{s[:-4]}.avi',cv2.VideoWriter_fourcc(*'XVID'),fps,(800,600))
 
     frames_list = []
     for i in range(len(interval)) : frames_list.append([])
@@ -95,10 +96,7 @@ def run_model(box,path,s) :
         cv2.putText(src,prediction,(250,570), font, 3, (0, 255, 0), 2, cv2.LINE_AA)
         cv2.putText(src,f"Pick Count : {pick_count}",(300,100), font, 2, (0, 0, 255), 2, cv2.LINE_AA)
         result.write(src) 
-        # cv2.imshow("",src)
-        # if cv2.waitKey(1) & 0xFF == ord('q'): break
         ret,src = video.read()
-    #cv2.destroyAllWindows()
     video.release()
     result.release()
 
